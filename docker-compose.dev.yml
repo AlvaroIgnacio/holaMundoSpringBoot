@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  hola_app:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+      - 8082:8080
+    environment:
+      - TZ= "America/Argentina/Buenos_Aires"
+    volumes:
+      - ./:/app
+    command: ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"
+
+
